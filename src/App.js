@@ -59,9 +59,9 @@ const App = () => {
         {error && <p>Failed to load data. Please try again later.</p>}
         {!loading && !error && (
           <>
-            <div className="flex justify-between">
+            <div className="flex flex-col md:flex-row justify-between">
               <h1 className="text-[36px] font-bold ml-4">Crypto Coins</h1>
-              <div>
+              <div className="m-4 md:m-0">
                 <button
                   onClick={() => setView("grid")}
                   className="p-3 bg-blue text-white rounded-lg hover:bg-grey"
@@ -78,7 +78,9 @@ const App = () => {
                 </button>
               </div>
             </div>
-            {view === "grid" && <GridView coins={coins} />}
+            {view === "grid" && (
+              <GridView coins={coins} onSelect={handleSelectCoin} />
+            )}
             {view === "tile" && (
               <TileView coins={coins} onSelect={handleSelectCoin} />
             )}
